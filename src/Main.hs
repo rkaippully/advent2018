@@ -1,6 +1,7 @@
 module Main where
 
 import           Day1
+import           Day2
 import           System.Environment (getArgs)
 import           System.Exit        (die)
 
@@ -17,7 +18,8 @@ usage = die "Usage: advent2018 <day number> <part number>"
 
 allParts :: [String -> String]
 allParts = [
-  day1part1, day1part2
+  day1part1, day1part2,
+  day2part1, day2part2
   ]
 
 runAdvent :: Int -> Int -> IO ()
