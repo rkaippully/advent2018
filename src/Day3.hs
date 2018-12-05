@@ -29,12 +29,12 @@ day3part1 s =
   case parse (many claim) "" s of
     Left e       -> show e
     Right claims -> show $ length $ filter (\x -> length x > 1) $ group $ sort $ concatMap toCoords claims
-  where
-    toCoords :: Claim -> [(Int, Int)]
-    toCoords c = do
-      x <- [left c..(left c + width c - 1)]
-      y <- [top c..(top c + height c - 1)]
-      return (x, y)
+
+toCoords :: Claim -> [(Int, Int)]
+toCoords c = do
+  x <- [left c..(left c + width c - 1)]
+  y <- [top c..(top c + height c - 1)]
+  return (x, y)
 
 data Coord = Coord {
   cClaimId  :: String
@@ -50,16 +50,10 @@ day3part2 s =
     f :: [Claim] -> Maybe Coord
     f claims =
       let
-        cs = map toCoords claims
+        cs = map (\c -> Coord (claimId c) (toCoords c)) claims
         coords = Set.fromList $ concat $ filter (\x -> length x == 1) $ group $ sort $ concatMap cCoords cs
       in
         find (isGoodClaim coords) cs
 
-    toCoords :: Claim -> Coord
-    toCoords c = Coord (claimId c) $ do
-      x <- [left c..(left c + width c - 1)]
-      y <- [top c..(top c + height c - 1)]
-      return (x, y)
-
     isGoodClaim :: Set (Int, Int) -> Coord -> Bool
-    isGoodClaim gs c = all (\x -> Set.member x gs) (cCoords c)
+    isGoodClaim gs c = all (`Set.member` gs) (cCoords c)
