@@ -7,7 +7,6 @@ import qualified Data.HashMap.Strict as HM
 import           Data.List           (isPrefixOf, maximumBy, sort)
 import           Data.Maybe          (fromJust, fromMaybe)
 import           Data.Ord            (comparing)
-import           Debug.Trace
 import           Util
 
 
@@ -30,6 +29,7 @@ toEvent s
   | "Guard" `isPrefixOf` eventStr = ShiftBegin $ read $ takeWhile isDigit $ drop 7 eventStr
   | "falls" `isPrefixOf` eventStr = FallsAsleep t
   | "wakes" `isPrefixOf` eventStr = WakesUp t
+  | otherwise                     = error $ "Bad input, Santa: " ++ s
   where
     eventStr = drop 19 s
     t = getTime s

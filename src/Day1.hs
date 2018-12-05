@@ -1,9 +1,8 @@
 module Day1 where
 
-import           Data.List  (find)
-import           Data.Maybe (fromJust, fromMaybe)
-import           Data.Set   (Set)
-import qualified Data.Set   as Set
+import           Data.List (find)
+import           Data.Set  (Set)
+import qualified Data.Set  as Set
 import           Util
 
 
