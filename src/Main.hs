@@ -5,6 +5,7 @@ module Main where
 import           Day1
 import           Day2
 import           Day3
+import           Day4
 import           System.Environment (getArgs)
 import           System.Exit        (die)
 
@@ -27,7 +28,8 @@ allParts :: [String -> Showable]
 allParts = [
   showable day1part1, showable day1part2,
   showable day2part1, showable day2part2,
-  showable day3part1, showable day3part2
+  showable day3part1, showable day3part2,
+  showable day4part1, showable day4part2
   ]
 
 runAdvent :: Int -> Int -> IO ()
