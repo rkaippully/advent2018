@@ -7,12 +7,9 @@ import           Text.Megaparsec
 import           Text.Megaparsec.Char
 
 
-newtype ClaimId = ClaimId Int
-  deriving (Eq, Ord, Show)
-newtype X = X Int
-  deriving (Eq, Ord, Show)
-newtype Y = Y Int
-  deriving (Eq, Ord, Show)
+newtype ClaimId = ClaimId { claimNumber :: Int } deriving (Eq, Ord, Show)
+newtype X = X Int deriving (Eq, Ord, Show)
+newtype Y = Y Int deriving (Eq, Ord, Show)
 
 data Claim = Claim {
   claimId  :: ClaimId
@@ -42,8 +39,7 @@ day3part2 s =
     goodClaimIds = pickClaimIds (\x -> length x == 1) $ groupedClaims s
     badClaimIds = pickClaimIds (\x -> length x > 1) $ groupedClaims s
   in
-    case Set.findMin $ Set.difference goodClaimIds badClaimIds of
-      ClaimId n -> n
+    claimNumber $ Set.findMin $ Set.difference goodClaimIds badClaimIds
 
 getClaims :: String -> [Claim]
 getClaims s =
