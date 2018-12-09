@@ -8,6 +8,9 @@ import           Day3
 import           Day4
 import           Day5
 import           Day6
+import           Day7
+import           Day8
+import           Day9
 import           System.Environment (getArgs)
 import           System.Exit        (die)
 
@@ -33,7 +36,10 @@ allParts = [
   showable day3part1, showable day3part2,
   showable day4part1, showable day4part2,
   showable day5part1, showable day5part2,
-  showable day6part1, showable day6part2
+  showable day6part1, showable day6part2,
+  showable day7part1, showable day7part2,
+  showable day8part1, showable day8part2,
+  showable day9part1, showable day9part2
   ]
 
 runAdvent :: Int -> Int -> IO ()
