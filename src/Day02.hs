@@ -1,4 +1,4 @@
-module Day2 where
+module Day02 where
 
 import           Data.List  (find, group, sort)
 import           Data.Maybe (isJust)
@@ -6,8 +6,8 @@ import           Data.Set   (Set)
 import qualified Data.Set   as Set
 
 
-day2part1 :: String -> Int
-day2part1 ids =
+day02part1 :: String -> Int
+day02part1 ids =
   let
     charLengths = map length . group . sort -- lengths of each chars in a line
     ls = map charLengths (lines ids)
@@ -16,8 +16,8 @@ day2part1 ids =
   in
     twos * threes
 
-day2part2 :: String -> Maybe String
-day2part2 ids =
+day02part2 :: String -> Maybe String
+day02part2 ids =
   let
     mkPairs s = [(take n s, drop (n+1) s) | n <- [0..length s]]
     allPairs = concatMap mkPairs $ lines ids

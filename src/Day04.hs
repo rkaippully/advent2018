@@ -1,4 +1,4 @@
-module Day4 where
+module Day04 where
 
 import           Control.Arrow       ((&&&))
 import           Data.Char           (isDigit)
@@ -49,8 +49,8 @@ toSleeps (g, t, slps) (WakesUp t') = (g, t, slps')
 getSleeps :: String -> SleepState
 getSleeps = thd3 . foldl toSleeps (undefined, undefined, HM.empty) . map toEvent . sort . lines
 
-day4part1 :: String -> Int
-day4part1 input =
+day04part1 :: String -> Int
+day04part1 input =
   let
     slps = getSleeps input
     guardId = fst $ maximumBy (comparing $ fst . snd) $ HM.toList slps
@@ -58,8 +58,8 @@ day4part1 input =
   in
     guardId * mostSleepyTime
 
-day4part2 :: String -> GuardId
-day4part2 input =
+day04part2 :: String -> GuardId
+day04part2 input =
   let
     slps = getSleeps input
 

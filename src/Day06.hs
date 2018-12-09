@@ -1,4 +1,4 @@
-module Day6 where
+module Day06 where
 
 import           Data.HashMap.Strict  (HashMap)
 import qualified Data.HashMap.Strict  as HM
@@ -9,8 +9,8 @@ import           Text.Megaparsec
 import           Text.Megaparsec.Char
 
 
-day6part1 :: String -> Int
-day6part1 s =
+day06part1 :: String -> Int
+day06part1 s =
   let
     coords = getCoords s
     maxX = fst $ maximumBy (comparing fst) coords
@@ -56,8 +56,8 @@ parseCoord = do
   _ <- newline
   return (x, y)
 
-day6part2 :: String -> Int
-day6part2 s =
+day06part2 :: String -> Int
+day06part2 s =
   let
     coords = getCoords s
     maxX = fst $ maximumBy (comparing fst) coords

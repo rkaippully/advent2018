@@ -1,4 +1,4 @@
-module Day3 where
+module Day03 where
 
 import           Data.List            (groupBy, sortOn)
 import           Data.Set             (Set)
@@ -27,11 +27,11 @@ equalCoord x y = coord x == coord y
 groupedClaims :: String -> [[Claim]]
 groupedClaims = groupBy equalCoord . sortOn coord . getClaims
 
-day3part1 :: String -> Int
-day3part1 = length . filter (\x -> length x > 1) . groupedClaims
+day03part1 :: String -> Int
+day03part1 = length . filter (\x -> length x > 1) . groupedClaims
 
-day3part2 :: String -> Int
-day3part2 s =
+day03part2 :: String -> Int
+day03part2 s =
   let
     pickClaimIds :: ([Claim] -> Bool) -> [[Claim]] -> Set ClaimId
     pickClaimIds f = Set.fromList . concatMap (map claimId) . filter f

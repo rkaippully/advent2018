@@ -2,17 +2,18 @@
 
 module Main where
 
-import           Day1
-import           Day2
-import           Day3
-import           Day4
-import           Day5
-import           Day6
-import           Day7
-import           Day8
-import           Day9
+import           Day01
+import           Day02
+import           Day03
+import           Day04
+import           Day05
+import           Day06
+import           Day07
+import           Day08
+import           Day09
 import           System.Environment (getArgs)
 import           System.Exit        (die)
+
 
 main :: IO ()
 main = do
@@ -31,15 +32,15 @@ showable f = Showable . f
 
 allParts :: [String -> Showable]
 allParts = [
-  showable day1part1, showable day1part2,
-  showable day2part1, showable day2part2,
-  showable day3part1, showable day3part2,
-  showable day4part1, showable day4part2,
-  showable day5part1, showable day5part2,
-  showable day6part1, showable day6part2,
-  showable day7part1, showable day7part2,
-  showable day8part1, showable day8part2,
-  showable day9part1, showable day9part2
+  showable day01part1, showable day01part2,
+  showable day02part1, showable day02part2,
+  showable day03part1, showable day03part2,
+  showable day04part1, showable day04part2,
+  showable day05part1, showable day05part2,
+  showable day06part1, showable day06part2,
+  showable day07part1, showable day07part2,
+  showable day08part1, showable day08part2,
+  showable day09part1, showable day09part2
   ]
 
 runAdvent :: Int -> Int -> IO ()

@@ -1,4 +1,4 @@
-module Day8 where
+module Day08 where
 
 import           Data.Foldable (fold)
 import           Data.List     (splitAt)
@@ -31,11 +31,11 @@ getChildren n xs = let (t, xs') = toTree' xs
                        (ts, xs'') = getChildren (n-1) xs'
                    in (t:ts, xs'')
 
-day8part1 :: String -> Int
-day8part1 = sum . fold . toTree . getInput
+day08part1 :: String -> Int
+day08part1 = sum . fold . toTree . getInput
 
-day8part2 :: String -> Int
-day8part2 = rootLabel . xformTree . toTree . getInput
+day08part2 :: String -> Int
+day08part2 = rootLabel . xformTree . toTree . getInput
   where
     xformTree :: Tree Metadata -> Tree Int
     xformTree (Node ms []) = Node (sum ms) []

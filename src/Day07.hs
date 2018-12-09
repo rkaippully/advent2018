@@ -1,6 +1,6 @@
 {-# LANGUAGE TupleSections #-}
 
-module Day7 where
+module Day07 where
 
 import           Data.Bifunctor      (bimap, first)
 import           Data.Char           (ord)
@@ -14,8 +14,8 @@ import qualified Data.Set            as S
 
 type Graph = HashMap Char (Set Char)
 
-day7part1 :: String -> String
-day7part1 = unfoldr doNextWork . makeGraph
+day07part1 :: String -> String
+day07part1 = unfoldr doNextWork . makeGraph
 
 makeGraph :: String -> Graph
 makeGraph = makeMap . map getEdge . lines
@@ -47,8 +47,8 @@ stepComplete c = HM.map (S.delete c)
 
 type State = ([Maybe (Char, Int)], Graph)
 
-day7part2 :: String -> Int
-day7part2 s =
+day07part2 :: String -> Int
+day07part2 s =
   length $ takeWhile isWorking $ iterate doNextStep startState
   where
     g = makeGraph s :: Graph

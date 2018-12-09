@@ -1,4 +1,4 @@
-module Day9 where
+module Day09 where
 
 import           Data.List     (foldl')
 import           Data.Sequence (Seq, ViewL (..), (><))
@@ -21,8 +21,8 @@ startState nPlayers = GameState {
   , scores = S.replicate nPlayers 0
   }
 
-day9part1 :: String -> Int
-day9part1 s =
+day09part1 :: String -> Int
+day09part1 s =
   let
     [nPlayers, nMarbles] = read <$> words s
   in
@@ -62,8 +62,8 @@ specialPlay s (marble, player) =
                     , currentIndex = idx `mod` (n-1)
                     , scores = S.adjust' (+ (marble + x)) (player-1) sc }
 
-day9part2 :: String -> Int
-day9part2 s =
+day09part2 :: String -> Int
+day09part2 s =
   let
     [nPlayers, nMarbles] = read <$> words s
   in
