@@ -31,6 +31,7 @@ executable advent2018
                , Day07
                , Day08
                , Day09
+               , Day10
   ghc-options: -Wall -O -threaded -rtsopts -with-rtsopts=-N
   build-depends: base >=4.7 && <5
                , containers
