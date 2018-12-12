@@ -47,7 +47,7 @@ toSleeps (g, t, slps) (WakesUp t') = (g, t, slps')
               HM.insert g (oldTime + t' - t, newFreq) slps
 
 getSleeps :: String -> SleepState
-getSleeps = thd3 . foldl toSleeps (undefined, undefined, HM.empty) . map toEvent . sort . lines
+getSleeps = third . foldl toSleeps (undefined, undefined, HM.empty) . map toEvent . sort . lines
 
 day04part1 :: String -> Int
 day04part1 input =
@@ -69,6 +69,6 @@ day04part2 input =
     freqs :: [(GuardId, Time, Freq)]
     freqs = concatMap toFreq $ HM.toList slps
 
-    (guardId, minute) = fst3 &&& snd3 $ maximumBy (comparing thd3) freqs
+    (guardId, minute) = first &&& second $ maximumBy (comparing third) freqs
   in
     guardId * minute

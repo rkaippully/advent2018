@@ -13,6 +13,7 @@ import           Day07              (day07part1, day07part2)
 import           Day08              (day08part1, day08part2)
 import           Day09              (day09part1, day09part2)
 import           Day10              (day10part1, day10part2)
+import           Day11              (day11part1, day11part2)
 import           System.Environment (getArgs)
 import           System.Exit        (die)
 
@@ -40,6 +41,12 @@ instance ToString a => ToString (Maybe a) where
   toString Nothing  = "Nothing"
   toString (Just x) = "Just " ++ toString x
 
+instance (ToString a, ToString b) => ToString (a, b) where
+  toString (x, y) = "(" ++ toString x ++ ", " ++ toString y ++ ")"
+
+instance (ToString a, ToString b, ToString c) => ToString (a, b, c) where
+  toString (x, y, z) = "(" ++ toString x ++ ", " ++ toString y ++ ", " ++ toString z ++ ")"
+
 data Showable = forall a. ToString a => Showable a
 
 showable :: ToString a => (String -> a) -> String -> Showable
@@ -56,7 +63,8 @@ allParts = [
   showable day07part1, showable day07part2,
   showable day08part1, showable day08part2,
   showable day09part1, showable day09part2,
-  showable day10part1, showable day10part2
+  showable day10part1, showable day10part2,
+  showable day11part1, showable day11part2
   ]
 
 runAdvent :: Int -> Int -> IO ()
