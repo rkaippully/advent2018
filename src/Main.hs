@@ -14,9 +14,9 @@ import           Day08              (day08part1, day08part2)
 import           Day09              (day09part1, day09part2)
 import           Day10              (day10part1, day10part2)
 import           Day11              (day11part1, day11part2)
+import           Day12              (day12part1, day12part2)
 import           System.Environment (getArgs)
 import           System.Exit        (die)
-
 
 main :: IO ()
 main = do
@@ -64,7 +64,8 @@ allParts = [
   showable day08part1, showable day08part2,
   showable day09part1, showable day09part2,
   showable day10part1, showable day10part2,
-  showable day11part1, showable day11part2
+  showable day11part1, showable day11part2,
+  showable day12part1, showable day12part2
   ]
 
 runAdvent :: Int -> Int -> IO ()
