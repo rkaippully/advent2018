@@ -1,7 +1,6 @@
 module Day12 where
 
 import           Control.Comonad
-import           Data.List       (intercalate)
 import           Util
 
 
@@ -13,9 +12,11 @@ data Zipper a = Zipper [a] a [a]
 
 left :: Zipper a -> Zipper a
 left (Zipper (l:ls) x rs) = Zipper ls l (x:rs)
+left (Zipper [] _ _)      = error "left exhausted"
 
 right :: Zipper a -> Zipper a
 right (Zipper ls x (r:rs)) = Zipper (x:ls) r rs
+right (Zipper _ _ [])      = error "right exhausted"
 
 -- Window of n elements on both sides
 window :: Int -> Zipper a -> [a]
