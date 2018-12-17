@@ -54,4 +54,6 @@ executable advent2018
                , megaparsec
                , array
                , comonad
+               , mtl
+               , transformers
   default-language: Haskell2010
