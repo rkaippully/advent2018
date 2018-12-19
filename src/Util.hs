@@ -49,3 +49,7 @@ instance Tuple4 (a, b, c, d) where
 
 sublist :: Int -> Int -> [a] -> [a]
 sublist from to = take (to - from) . drop from
+
+filterMaybe :: (a -> Bool) -> a -> Maybe a
+filterMaybe p x | p x       = Just x
+                | otherwise = Nothing

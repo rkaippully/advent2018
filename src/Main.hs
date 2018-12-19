@@ -3,6 +3,7 @@
 
 module Main where
 
+import           Data.List          (intercalate)
 import           Day01              (day01part1, day01part2)
 import           Day02              (day02part1, day02part2)
 import           Day03              (day03part1, day03part2)
@@ -31,6 +32,7 @@ import           Day25              (day25part1, day25part2)
 import           System.Environment (getArgs)
 import           System.Exit        (die)
 
+
 main :: IO ()
 main = do
   args <- getArgs
@@ -44,9 +46,6 @@ usage = die "Usage: advent2018 <day number> <part number>"
 class ToString a where
   toString :: a -> String
 
-instance ToString [Char] where
-  toString = id
-
 instance ToString Int where
   toString = show
 
@@ -59,6 +58,12 @@ instance (ToString a, ToString b) => ToString (a, b) where
 
 instance (ToString a, ToString b, ToString c) => ToString (a, b, c) where
   toString (x, y, z) = "(" ++ toString x ++ ", " ++ toString y ++ ", " ++ toString z ++ ")"
+
+instance {-# OVERLAPPABLE #-} ToString a => ToString [a] where
+  toString xs = "[" ++ intercalate "," (toString <$> xs) ++ "]"
+
+instance {-# OVERLAPPING #-} ToString [Char] where
+  toString = id
 
 data Showable = forall a. ToString a => Showable a
 
